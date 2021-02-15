@@ -1,3 +1,18 @@
 /* 
     General Styles
 */
+
+body{
+    margin: 0;
+    padding: 0;
+    background-image: url("./pexels-jakub-novacek-924824.jpg");
+    background-position: fixed;
+    background-repeat: none;
+    background-size: cover;
+}
+.navbar-brand{
+    background-color: #fff;
+}
+footer{
+    color: white;
+}
