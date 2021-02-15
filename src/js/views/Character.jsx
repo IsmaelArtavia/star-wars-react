@@ -20,7 +20,7 @@ const Character = props => {
 				let properties = data.result.properties;
 				setPropiedades(properties);
 			});
-	});
+	}, []);
 	return (
 		<div className="container character">
 			<div className="row">

@@ -20,7 +20,7 @@ const Card = props => {
 				let properties = data.result.properties;
 				setPropiedades(properties);
 			});
-	});
+	}, []);
 	return (
 		<div className="card">
 			<img src="https://via.placeholder.com/150" className="card-img-top" alt="..." />
@@ -28,7 +28,7 @@ const Card = props => {
 				<h5 className="card-title">{props.name}</h5>
 				<p className="card-text">{propiedades.gender}</p>
 				<Link to={`/character/${props.id}`}>
-					<button className="btn btn-primary">Go somewhere</button>
+					<button className="btn btn-primary">Details</button>
 				</Link>
 
 				<button className="btn">
