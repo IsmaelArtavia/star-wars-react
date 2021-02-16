@@ -22,14 +22,15 @@ export const Navbar = () => {
 					aria-expanded="false">
 					Favorites
 				</a>
-
 				<ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
 					{store.likes.map((item, i) => {
 						return (
 							<li key={i}>
+								<i className="fas fa-thumbs-up" />
 								{item.name}
 								<i
-									onClick={() => {
+									onClick={e => {
+										e.preventDefault();
 										actions.deleteFav(item.id);
 									}}
 									className="fas fa-trash"

@@ -5,10 +5,11 @@
 body{
     margin: 0;
     padding: 0;
-    background-image: url("./pexels-jakub-novacek-924824.jpg");
-    background-position: fixed;
-    background-repeat: none;
-    background-size: cover;
+    // background-image: url("./pexels-jakub-novacek-924824.jpg");
+    // background-position: fixed;
+    // background-repeat: none;
+    // background-size: cover;
+    background-image: linear-gradient(to right, #020202, #004e9b);
 }
 .navbar-brand{
     background-color: #fff;

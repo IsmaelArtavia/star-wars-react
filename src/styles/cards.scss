@@ -50,7 +50,9 @@
     }
 }
 .dropdown-menu{
+    color: white;
     text-align: center;
+    background-image: linear-gradient(to right, #8099ff, #ff0000);
 }
 
 .fa-trash{
@@ -58,6 +60,6 @@
 }
 
 .fa-trash:hover{
-    color: red;
+    color: rgb(12, 9, 9);
     
 }
