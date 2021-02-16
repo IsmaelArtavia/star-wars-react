@@ -21,6 +21,17 @@ const Card = props => {
 				setPropiedades(properties);
 			});
 	}, []);
+
+	const handleClick = id => {
+		let newObject = {};
+		let newArray = [];
+		store.personas.map(item => {
+			if (item.uid === id) {
+				newObject = { name: item.name, id: item.uid };
+				actions.addFav(newObject);
+			}
+		});
+	};
 	return (
 		<div className="card">
 			<img src="https://via.placeholder.com/150" className="card-img-top" alt="..." />
@@ -28,10 +39,14 @@ const Card = props => {
 				<h5 className="card-title">{props.name}</h5>
 				<p className="card-text">{propiedades.gender}</p>
 				<Link to={`/character/${props.id}`}>
-					<button className="btn btn-primary">Details</button>
+					<button className="btn btn-warning">Details</button>
 				</Link>
 
-				<button className="btn">
+				<button
+					className="btn"
+					onClick={() => {
+						handleClick(props.id);
+					}}>
 					<i className="far fa-heart" />
 				</button>
 				{/* Genero, color de cabvello y color de ojos */}

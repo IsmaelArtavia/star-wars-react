@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext.js";
-
+import "../../styles/cards.scss";
 export const Navbar = () => {
 	const { store, actions } = useContext(Context);
 	return (
@@ -20,12 +20,22 @@ export const Navbar = () => {
 					id="dropdownMenuLink"
 					data-bs-toggle="dropdown"
 					aria-expanded="false">
-					Dropdown link
+					Favorites
 				</a>
 
 				<ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
-					{store.planetas.map(item => {
-						return <li key={item.uid}>{item.name}</li>;
+					{store.likes.map((item, i) => {
+						return (
+							<li key={i}>
+								{item.name}
+								<i
+									onClick={() => {
+										actions.deleteFav(item.id);
+									}}
+									className="fas fa-trash"
+								/>
+							</li>
+						);
 					})}
 				</ul>
 			</div>

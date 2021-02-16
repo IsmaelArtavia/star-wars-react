@@ -20,6 +20,15 @@
         img{
            height: 60%;
         }
+        .fa-heart{
+            color: blue;
+
+            &:hover{
+                color: red;
+                font-size: 1.4rem;
+            }
+        }
+
     }
 }
 .character{
@@ -39,4 +48,16 @@
         color: red;
         font-size: 1.3rem;
     }
+}
+.dropdown-menu{
+    text-align: center;
+}
+
+.fa-trash{
+    margin-left: 3%;
+}
+
+.fa-trash:hover{
+    color: red;
+    
 }

@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { Context } from "../store/appContext.js";
 import "../../styles/cards.scss";
 const Character = props => {
 	let [propiedades, setPropiedades] = useState({});
 	let params = useParams();
-
+	let history = useHistory();
 	const { store, actions } = useContext(Context);
 	let url;
 	store.personas.map(element => {
@@ -62,6 +62,15 @@ const Character = props => {
 				<div>
 					Eyes Color:
 					<br /> {propiedades.eye_color}
+				</div>
+				<div className="tc">
+					<button
+						onClick={() => {
+							history.goBack();
+						}}
+						className="btn btn-success come">
+						Come Back{" "}
+					</button>
 				</div>
 			</div>
 		</div>

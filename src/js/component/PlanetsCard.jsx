@@ -10,12 +10,12 @@ const PlanetsCard = props => {
 				<h5 className="card-title">{props.name}</h5>
 				<p className="card-text">Some quic</p>
 				<Link to={`/planet/${props.id}`}>
-					<button className="btn btn-primary">Details</button>
+					<button className="btn btn-warning">Details</button>
 				</Link>
 
-				<button className="btn">
+				{/* <button className="btn">
 					<i className="far fa-heart" />
-				</button>
+				</button> */}
 				{/* Genero, color de cabvello y color de ojos */}
 			</div>
 		</div>

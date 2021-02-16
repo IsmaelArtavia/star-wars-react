@@ -3,23 +3,24 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			demo: [
 				{
-					title: "FIRST",
+					name: "FIRST",
 					background: "white",
 					initial: "white"
 				},
 				{
-					title: "SECOND",
+					name: "SECOND",
 					background: "white",
 					initial: "white"
 				},
 				{
-					title: "THIRD",
+					name: "THIRD",
 					background: "black",
 					initial: "white"
 				}
 			],
 			personas: [],
-			planetas: []
+			planetas: [],
+			likes: []
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -31,7 +32,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(data => data.json())
 					.then(data => {
 						let characters = data.results;
-
 						setStore({ personas: characters });
 					});
 
@@ -39,7 +39,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(data => data.json())
 					.then(data => {
 						let planets = data.results;
-						console.log(planets);
 						setStore({ planetas: planets });
 					});
 			},
@@ -56,6 +55,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				//reset the global store
 				setStore({ demo: demo });
+			},
+			addFav: fav => {
+				const data = fav;
+				setStore({
+					likes: getStore().likes.concat(data)
+				});
+			},
+			deleteFav: id => {
+				setStore({
+					likes: getStore().likes.filter(item => item.id !== id)
+				});
 			}
 		}
 	};
