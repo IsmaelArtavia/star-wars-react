@@ -83,6 +83,7 @@
 		"react-dom": "^16.8.4",
 		"react-polyfills": "0.0.1",
 		"react-router-dom": "^5.2.0",
-		"shortid": "^2.2.16"
+		"shortid": "^2.2.16",
+		"typewriter-effect": "^2.17.0"
 	}
 }

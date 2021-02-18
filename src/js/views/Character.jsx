@@ -25,7 +25,12 @@ const Character = props => {
 		<div className="container character">
 			<div className="row">
 				<div className="col-6">
-					<img src="https://via.placeholder.com/250" alt="" />
+					<img
+						src="https://pm1.narvii.com/6211/943cf27fa773d5da8addbabc3a0c27476cd6a255_hq.jpg"
+						height="375px"
+						width="350px"
+						alt=""
+					/>
 				</div>
 				<div className="col-6">
 					<p>
@@ -33,6 +38,13 @@ const Character = props => {
 						necessitatibus eveniet labore cumque ipsa libero accusamus, ipsum excepturi, facere repellendus
 						assumenda possimus id! Tempore nemo quisquam ab!
 					</p>
+					<button
+						onClick={() => {
+							history.goBack();
+						}}
+						className="btn btn-danger btn-block come">
+						Come Back{" "}
+					</button>
 				</div>
 			</div>
 			<div className="propiedades">
@@ -63,15 +75,7 @@ const Character = props => {
 					Eyes Color:
 					<br /> {propiedades.eye_color}
 				</div>
-				<div className="tc">
-					<button
-						onClick={() => {
-							history.goBack();
-						}}
-						className="btn btn-success come">
-						Come Back{" "}
-					</button>
-				</div>
+				<div className="tc" />
 			</div>
 		</div>
 	);

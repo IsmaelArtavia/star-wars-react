@@ -2,13 +2,14 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext.js";
 import "../../styles/cards.scss";
+import logo from "./logo.jpg";
 export const Navbar = () => {
 	const { store, actions } = useContext(Context);
 	return (
-		<nav className="navbar navbar-dark mb-3">
+		<nav className="navbar fixed-top navbar-dark mb-3">
 			<Link to="/">
 				<span className="navbar-brand mb-0 h1">
-					<img src="https://img.icons8.com/ios-filled/50/000000/star-wars.png" />
+					<img src={logo} height="50px" width="50px" />
 				</span>
 			</Link>
 
@@ -20,7 +21,7 @@ export const Navbar = () => {
 					id="dropdownMenuLink"
 					data-bs-toggle="dropdown"
 					aria-expanded="false">
-					Favorites
+					Favorites <span id="likes-length">{store.likes.length}</span>
 				</a>
 				<ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
 					{store.likes.map((item, i) => {

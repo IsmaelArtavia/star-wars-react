@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import "../../styles/cards.scss";
 import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext.js";
+import Typewriter from "typewriter-effect";
 
 const Card = props => {
 	let [propiedades, setPropiedades] = useState({});
@@ -34,10 +35,26 @@ const Card = props => {
 	};
 	return (
 		<div className="card">
-			<img src="https://via.placeholder.com/150" className="card-img-top" alt="..." />
+			<img
+				src="https://pm1.narvii.com/6211/943cf27fa773d5da8addbabc3a0c27476cd6a255_hq.jpg"
+				className="card-img-top"
+				alt="..."
+			/>
 			<div className="card-body">
-				<h5 className="card-title">{props.name}</h5>
-				<p className="card-text">{propiedades.gender}</p>
+				<h5 className="card-title">
+					<Typewriter
+						className="brand"
+						options={{
+							strings: [props.name],
+							autoStart: true,
+							loop: true,
+							delay: 200
+						}}
+					/>
+				</h5>
+				<p className="card-text">Gender: {propiedades.gender}</p>
+				<p className="card-text">Hair Color: {propiedades.hair_color}</p>
+				<p className="card-text">Eye Color: {propiedades.eye_color}</p>
 				<Link to={`/character/${props.id}`}>
 					<button className="btn btn-warning">Details</button>
 				</Link>

@@ -14,11 +14,11 @@
         margin: 0 10px 0 3px;
         width: 350px;
         display: inline-block;
-        height: 400px;
+        height: 500px;
         overflow: auto;
         
         img{
-           height: 60%;
+           height: 50%;
         }
         .fa-heart{
             color: blue;
@@ -44,8 +44,8 @@
     margin: 0 auto;
     width: 80%;
     div{
-        margin: 0 2%;
-        color: red;
+        margin: 0 5%;
+        color: white;
         font-size: 1.3rem;
     }
 }
@@ -62,4 +62,12 @@
 .fa-trash:hover{
     color: rgb(12, 9, 9);
     
+}
+
+
+#likes-length{
+    background-color: white;
+    color: red;
+    border-radius: 5px;
+    margin-left: 2%;
 }

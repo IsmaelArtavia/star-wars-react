@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { Context } from "../store/appContext.js";
 import "../../styles/cards.scss";
 const Character = props => {
 	let [propiedades, setPropiedades] = useState({});
 	let params = useParams();
-
+	let history = useHistory();
 	const { store, actions } = useContext(Context);
 	let url;
 	store.planetas.map(element => {
@@ -25,7 +25,12 @@ const Character = props => {
 		<div className="container character">
 			<div className="row">
 				<div className="col-6">
-					<img src="https://via.placeholder.com/250" alt="" />
+					<img
+						src="https://inteng-storage.s3.amazonaws.com/images/uploads/sizes/starwars-1_resize_md.jpg"
+						alt=""
+						height="375px"
+						width="350px"
+					/>
 				</div>
 				<div className="col-6">
 					<p>
@@ -33,6 +38,13 @@ const Character = props => {
 						necessitatibus eveniet labore cumque ipsa libero accusamus, ipsum excepturi, facere repellendus
 						assumenda possimus id! Tempore nemo quisquam ab!
 					</p>
+					<button
+						onClick={() => {
+							history.goBack();
+						}}
+						className="btn btn-danger btn-block come">
+						Come Back{" "}
+					</button>
 				</div>
 			</div>
 			<div className="propiedades">
