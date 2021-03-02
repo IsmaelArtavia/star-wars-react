@@ -10,7 +10,7 @@ const PlanetsList = () => {
 			<div className="card-container planets">
 				<h1 className="title-characters">Planets</h1>
 				{store.planetas.map(item => {
-					return <PlanetsCard name={item.name} key={item.uid} id={item.uid} />;
+					return <PlanetsCard name={item.name} key={item.id} id={item.id} />;
 				})}
 			</div>
 		</div>

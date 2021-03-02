@@ -11,7 +11,7 @@ const CardList = () => {
 			<div className="card-container">
 				<h1 className="title-characters">Characters</h1>
 				{store.personas.map(item => {
-					return <Card name={item.name} key={item.uid} id={item.uid} />;
+					return <Card name={item.name} key={item.id} id={item.id} url={item.url} />;
 				})}
 			</div>
 		</div>

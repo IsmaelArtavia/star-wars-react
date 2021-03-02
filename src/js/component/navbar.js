@@ -23,6 +23,9 @@ export const Navbar = () => {
 					aria-expanded="false">
 					Favorites <span id="likes-length">{store.likes.length}</span>
 				</a>
+				<Link to="/ingresar">
+					<button className="btn btn-block btn-primary">Ingresar</button>
+				</Link>
 				<ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
 					{store.likes.map((item, i) => {
 						return (

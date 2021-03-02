@@ -2,25 +2,29 @@ import React, { useContext, useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { Context } from "../store/appContext.js";
 import "../../styles/cards.scss";
-const Character = props => {
-	let [propiedades, setPropiedades] = useState({});
+//const Character = props => {
+const Planet = props => {
+	//let [propiedades, setPropiedades] = useState({});
 	let params = useParams();
 	let history = useHistory();
 	const { store, actions } = useContext(Context);
-	let url;
-	store.planetas.map(element => {
-		if (params.id === element.uid) {
-			url = element.url;
-		}
-	});
-	useEffect(() => {
-		fetch(url)
-			.then(data => data.json())
-			.then(data => {
-				let properties = data.result.properties;
-				setPropiedades(properties);
-			});
-	});
+	let param_number = parseInt(params.id);
+	let propiedades = store.planetas[param_number - 1];
+
+	//let url;
+	//store.planetas.map(element => {
+	//	if (params.id === element.uid) {
+	//		url = element.url;
+	//	}
+	//});
+	//useEffect(() => {
+	//	fetch(url)
+	//		.then(data => data.json())
+	//		.then(data => {
+	//			let properties = data.result.properties;
+	//			setPropiedades(properties);
+	//		});
+	//});
 	return (
 		<div className="container character">
 			<div className="row">
@@ -49,7 +53,8 @@ const Character = props => {
 			</div>
 			<div className="propiedades">
 				<div>
-					Name: <br />
+					Name:
+					<br />
 					{propiedades.name}
 				</div>
 				<div>
@@ -80,4 +85,4 @@ const Character = props => {
 	);
 };
 
-export default Character;
+export default Planet;

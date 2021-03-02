@@ -8,20 +8,21 @@ import Typewriter from "typewriter-effect";
 const Card = props => {
 	let [propiedades, setPropiedades] = useState({});
 	const { store, actions } = useContext(Context);
-	let url;
-	store.personas.map(element => {
-		if (props.id === element.uid) {
-			url = element.url;
-		}
-	});
-	useEffect(() => {
-		fetch(url)
-			.then(data => data.json())
-			.then(data => {
-				let properties = data.result.properties;
-				setPropiedades(properties);
-			});
-	}, []);
+	// let url;
+	// store.personas.map(element => {
+	// 	if (props.id === element.id) {
+	// 		url = element.url;
+	// 	}
+	// });
+	// useEffect(() => {
+	// 	fetch(props.url)
+	// 		.then(data => data.json())
+	// 		.then(data => {
+	// 			let properties = data;
+	// 			setPropiedades(properties);
+	// 		});
+	// }, []);
+	let properties = store.personas[props.id - 1];
 
 	const handleClick = id => {
 		let newObject = {};
@@ -45,16 +46,16 @@ const Card = props => {
 					<Typewriter
 						className="brand"
 						options={{
-							strings: [props.name],
+							strings: [properties.name],
 							autoStart: true,
 							loop: true,
 							delay: 200
 						}}
 					/>
 				</h5>
-				<p className="card-text">Gender: {propiedades.gender}</p>
-				<p className="card-text">Hair Color: {propiedades.hair_color}</p>
-				<p className="card-text">Eye Color: {propiedades.eye_color}</p>
+				<p className="card-text">Gender: {properties.gender}</p>
+				<p className="card-text">Hair Color: {properties.hair_color}</p>
+				<p className="card-text">Eye Color: {properties.eye_color}</p>
 				<Link to={`/character/${props.id}`}>
 					<button className="btn btn-warning">Details</button>
 				</Link>
@@ -73,6 +74,7 @@ const Card = props => {
 };
 Card.propTypes = {
 	name: PropTypes.string,
-	id: PropTypes.string
+	id: PropTypes.number,
+	url: PropTypes.string
 };
 export default Card;

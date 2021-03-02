@@ -28,17 +28,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 				getActions().changeColor(0, "green");
 			},
 			loadSomeData: () => {
-				fetch("https://www.swapi.tech/api/people/")
+				fetch("https://3000-fuchsia-finch-ukfmiw0c.ws-us03.gitpod.io/people")
 					.then(data => data.json())
 					.then(data => {
-						let characters = data.results;
+						let characters = data.personajes;
 						setStore({ personas: characters });
 					});
 
-				fetch("https://www.swapi.tech/api/planets/")
+				fetch("https://3000-fuchsia-finch-ukfmiw0c.ws-us03.gitpod.io/planets")
 					.then(data => data.json())
 					.then(data => {
-						let planets = data.results;
+						let planets = data.planets;
+						console.log(data.planets);
 						setStore({ planetas: planets });
 					});
 			},

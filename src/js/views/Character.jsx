@@ -3,24 +3,12 @@ import { useParams, useHistory } from "react-router-dom";
 import { Context } from "../store/appContext.js";
 import "../../styles/cards.scss";
 const Character = props => {
-	let [propiedades, setPropiedades] = useState({});
+	// let [propiedades, setPropiedades] = useState({});
 	let params = useParams();
 	let history = useHistory();
 	const { store, actions } = useContext(Context);
-	let url;
-	store.personas.map(element => {
-		if (params.id === element.uid) {
-			url = element.url;
-		}
-	});
-	useEffect(() => {
-		fetch(url)
-			.then(data => data.json())
-			.then(data => {
-				let properties = data.result.properties;
-				setPropiedades(properties);
-			});
-	}, []);
+	let param_number = parseInt(params.id);
+	let propiedades = store.personas[param_number - 1];
 	return (
 		<div className="container character">
 			<div className="row">
@@ -68,8 +56,8 @@ const Character = props => {
 					{propiedades.height}
 				</div>
 				<div>
-					Skin Color:
-					<br /> {propiedades.skin_color}
+					Hair Color:
+					<br /> {propiedades.hair_color}
 				</div>
 				<div>
 					Eyes Color:
