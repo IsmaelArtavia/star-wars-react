@@ -15,9 +15,6 @@ const Ingresar = () => {
 							aria-describedby="emailHelp"
 							placeholder="example@gmail.com"
 						/>
-						<div id="emailHelp" className="form-text">
-							We will never share your email with anyone else.
-						</div>
 					</div>
 					<div className="mb-3">
 						<label className="form-label">Password</label>

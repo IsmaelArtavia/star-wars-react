@@ -22,3 +22,12 @@ body{
         padding: 3%;
     }
 }
+.content{
+    position: relative;
+
+    .button{
+        position: absolute;
+        left: 90%;
+        bottom: 0.5%;
+    }
+}
