@@ -1,16 +1,27 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext.js";
 import "../../styles/cards.scss";
 import logo from "./logo.jpg";
 export const Navbar = () => {
 	const { store, actions } = useContext(Context);
-	let displayFavs = false;
+	const [displayfavs, setDisplayFavs] = useState(false);
 	let token = sessionStorage.getItem("token");
-	console.log(token);
-	if (token != null) {
-		displayFavs = true;
-	}
+	let userId = sessionStorage.getItem("userId");
+	console.log(userId);
+
+	const changeValue = () => {
+		if (userId != null) {
+			setDisplayFavs(true);
+		}
+	};
+
+	useEffect(
+		() => {
+			changeValue();
+		},
+		[userId]
+	);
 	return (
 		<nav className="navbar fixed-top navbar-dark mb-3">
 			<Link to="/">
@@ -18,12 +29,12 @@ export const Navbar = () => {
 					<img src={logo} height="50px" width="50px" />
 				</span>
 			</Link>
-			{displayFavs ? null : (
+			{displayfavs ? null : (
 				<Link to="/ingresar">
 					<button className="btn btn-block btn-primary">Ingresar</button>
 				</Link>
 			)}
-			{displayFavs ? (
+			{displayfavs ? (
 				<div className="dropdown dropstart">
 					<a
 						className="btn btn-danger dropdown-toggle"

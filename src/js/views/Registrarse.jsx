@@ -13,8 +13,8 @@ const Registrarse = () => {
 
 	const handleSubmit = e => {
 		e.preventDefault();
-		if (email === "" || pass === "") {
-			alert("correo y contraseña son requeridos");
+		if (email === "" || pass === "" || username === "") {
+			alert("correo, contraseña y username son requeridos");
 		}
 		console.log(email, username, pass);
 

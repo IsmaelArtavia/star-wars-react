@@ -39,7 +39,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(data => data.json())
 					.then(data => {
 						let planets = data.planets;
-						console.log(data.planets);
+
 						setStore({ planetas: planets });
 					});
 			},
