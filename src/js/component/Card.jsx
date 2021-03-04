@@ -28,9 +28,8 @@ const Card = props => {
 		let newObject = {};
 		let newArray = [];
 		store.personas.map(item => {
-			if (item.uid === id) {
-				newObject = { name: item.name, id: item.uid };
-				actions.addFav(newObject);
+			if (item.id === id) {
+				newObject = { type: item.type };
 			}
 		});
 	};

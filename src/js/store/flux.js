@@ -20,7 +20,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			],
 			personas: [],
 			planetas: [],
-			likes: []
+			likes: [],
+			logged: false
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -67,6 +68,32 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({
 					likes: getStore().likes.filter(item => item.id !== id)
 				});
+			},
+			checkLogged: () => {
+				let userId = sessionStorage.getItem("userId");
+				let token = sessionStorage.getItem("token");
+				if (token) {
+					setStore({ logged: true });
+
+					fetch(`https://3000-fuchsia-finch-ukfmiw0c.ws-us03.gitpod.io/${userId}/favorites`, {
+						method: "GET",
+						headers: {
+							"Content-Type": "application/json",
+							Authorization: "Bearer " + token
+						}
+						// body: JSON.stringify(data)
+					})
+						.then(response => response.json())
+						.then(data => {
+							console.log("Success:", data);
+						})
+						.catch(error => {
+							console.error("Error:", error);
+						});
+				} else {
+					console.log("aqui");
+					setStore({ logged: false });
+				}
 			}
 		}
 	};

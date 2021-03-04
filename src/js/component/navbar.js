@@ -6,22 +6,7 @@ import logo from "./logo.jpg";
 export const Navbar = () => {
 	const { store, actions } = useContext(Context);
 	const [displayfavs, setDisplayFavs] = useState(false);
-	let token = sessionStorage.getItem("token");
-	let userId = sessionStorage.getItem("userId");
-	console.log(userId);
 
-	const changeValue = () => {
-		if (userId != null) {
-			setDisplayFavs(true);
-		}
-	};
-
-	useEffect(
-		() => {
-			changeValue();
-		},
-		[userId]
-	);
 	return (
 		<nav className="navbar fixed-top navbar-dark mb-3">
 			<Link to="/">
@@ -29,12 +14,12 @@ export const Navbar = () => {
 					<img src={logo} height="50px" width="50px" />
 				</span>
 			</Link>
-			{displayfavs ? null : (
+			{store.logged ? null : (
 				<Link to="/ingresar">
 					<button className="btn btn-block btn-primary">Ingresar</button>
 				</Link>
 			)}
-			{displayfavs ? (
+			{store.logged ? (
 				<div className="dropdown dropstart">
 					<a
 						className="btn btn-danger dropdown-toggle"

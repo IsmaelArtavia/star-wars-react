@@ -2,8 +2,10 @@ import React, { useState, useContext } from "react";
 import "../../styles/home.scss";
 import { Link } from "react-router-dom";
 import { Redirect } from "react-router-dom";
+import { Context } from "../store/appContext.js";
 
 const Ingresar = () => {
+	const { store, actions } = useContext(Context);
 	const [email, setEmail] = useState("");
 	const [pass, setPass] = useState("");
 	const [redirect, setRedirect] = useState(false);
@@ -31,6 +33,7 @@ const Ingresar = () => {
 				sessionStorage.setItem("token", data.token);
 				sessionStorage.setItem("userId", data.userId);
 				setRedirect(true);
+				actions.checkLogged();
 			})
 			.catch(error => {
 				console.error("Error:", error);

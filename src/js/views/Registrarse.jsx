@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import "../../styles/home.scss";
 import { Redirect } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { Context } from "../store/appContext.js";
 
 const Registrarse = () => {
+	const { store, actions } = useContext(Context);
 	const [email, setEmail] = useState("");
 	const [pass, setPass] = useState("");
 	const [username, setUsername] = useState("");
