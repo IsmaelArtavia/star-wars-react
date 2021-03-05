@@ -8,31 +8,22 @@ import { Context } from "../store/appContext.js";
 const PlanetsCard = props => {
 	let [propiedades, setPropiedades] = useState({});
 	const { store, actions } = useContext(Context);
-	//let url;
-	//store.planetas.map(element => {
-	//	if (props.id === element.uid) {
-	//		url = element.url;
-	//	}
-	//});
-	//useEffect(() => {
-	//	fetch(url)
-	//		.then(data => data.json())
-	//		.then(data => {
-	//			let properties = data.result.properties;
-	//			setPropiedades(properties);
-	//		});
-	//}, []);
+
 	let properties = store.planetas[props.id - 1];
 
 	const handleClick = id => {
-		let newObject = {};
-		let newArray = [];
-		store.planetas.map(item => {
-			if (item.uid === id) {
-				newObject = { name: item.name, id: item.uid };
-				actions.addFav(newObject);
-			}
-		});
+		if (store.logged) {
+			let token = sessionStorage.getItem("token");
+			let userId = sessionStorage.getItem("userId");
+			let newObject = {
+				type: properties.tipo,
+				userId: userId,
+				planetId: properties.id,
+				name: properties.name
+			};
+			actions.addNewFavPlanet(newObject);
+			console.log(newObject);
+		}
 	};
 
 	return (

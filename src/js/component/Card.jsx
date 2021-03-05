@@ -6,32 +6,30 @@ import { Context } from "../store/appContext.js";
 import Typewriter from "typewriter-effect";
 
 const Card = props => {
-	let [propiedades, setPropiedades] = useState({});
 	const { store, actions } = useContext(Context);
-	// let url;
-	// store.personas.map(element => {
-	// 	if (props.id === element.id) {
-	// 		url = element.url;
-	// 	}
-	// });
-	// useEffect(() => {
-	// 	fetch(props.url)
-	// 		.then(data => data.json())
-	// 		.then(data => {
-	// 			let properties = data;
-	// 			setPropiedades(properties);
-	// 		});
-	// }, []);
 	let properties = store.personas[props.id - 1];
-
 	const handleClick = id => {
-		let newObject = {};
-		let newArray = [];
-		store.personas.map(item => {
-			if (item.id === id) {
-				newObject = { type: item.type };
+		if (store.logged) {
+			let token = sessionStorage.getItem("token");
+			let userId = sessionStorage.getItem("userId");
+			if (properties.tipo === "Personaje") {
+				let newObject = {
+					type: properties.tipo,
+					userId: userId,
+					characterId: properties.id,
+					name: properties.name
+				};
+				actions.addNewFavCharacter(newObject);
+			} else {
+				let newObject = {
+					type: properties.tipo,
+					userId: userId,
+					planetId: properties.id,
+					name: properties.name
+				};
+				actions.addNewFavPlanet(newObject);
 			}
-		});
+		}
 	};
 	return (
 		<div className="card">
@@ -63,6 +61,7 @@ const Card = props => {
 					className="btn"
 					onClick={() => {
 						handleClick(props.id);
+						//console.log(properties);
 					}}>
 					<i className="far fa-heart" />
 				</button>
